@@ -16,7 +16,7 @@ button.onclick = function(){
             }
         }
         //Request isn't processed(returned) yet
-    }
+    };
     //Render the variable in the correct span
     counter = counter + 1;
     var span = document.getElementById('count');
