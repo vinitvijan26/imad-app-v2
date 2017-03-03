@@ -1,9 +1,22 @@
 var button = document.getElementById('counter');
-var counter = 0;        //diff than the above counter id, this is variable
+//var counter = 0;        //diff than the above counter id, this is variable
 button.onclick = function(){
+    //Create a request object
+    var request = new XMLHttpRequest();
+    //one a request is made, the browser tells us if the response is received. Diff stages.
     
-    //Make a request to counter endpoint
     //Capture the response and store it in a variable
+    request.onreadychangestate = function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            //Take some action
+            if(request.status === 200){
+                var counter = request.responseText;     //taking the response from the server, the server returns the //counter to be displayed as html string
+                var span = Document.getElementById('count');
+                span.innerHTML = counter.toString();    //new counter - the value returned from server is displayed in html, in facebook, old feeds get loaded using the same principle, there the returned stuff contains images and other complex stuff and all stored in something like counter in this case and displayed using just the same thing as we did for span.
+            }
+        }
+        //Request isn't processed(returned) yet
+    }
     //Render the variable in the correct span
     counter = counter + 1;
     var span = document.getElementById('count');
