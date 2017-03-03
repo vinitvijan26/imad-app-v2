@@ -11,7 +11,7 @@ button.onclick = function(){
             //Take some action
             if(request.status === 200){
                 var counter = request.responseText;     //taking the response from the server, the server returns the //counter to be displayed as html string
-                var span = Document.getElementById('count');
+                var span = document.getElementById('count');
                 span.innerHTML = counter.toString();    //new counter - the value returned from server is displayed in html, in facebook, old feeds get loaded using the same principle, there the returned stuff contains images and other complex stuff and all stored in something like counter in this case and displayed using just the same thing as we did for span.
             }
         }
