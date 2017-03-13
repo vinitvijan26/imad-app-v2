@@ -15,9 +15,9 @@ button.onclick = function(){
                 span.innerHTML = counter.toString();    //new counter - the value returned from server is displayed in html, in facebook, old feeds get loaded using the same principle, there the returned stuff contains images and other complex stuff and all stored in something like counter in this case and displayed using just the same thing as we did for span.
             }
         }
-        else{
-            alert('There was a problem with the request.');
-        }
+        //else{
+        //    alert('There was a problem with the request.');
+        //}
         //Request isn't processed(returned) yet
     };
     //Render the variable in the correct span
