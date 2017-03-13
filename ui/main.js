@@ -21,7 +21,7 @@ button.onclick = function(){
         //Request isn't processed(returned) yet
     };
     //Render the variable in the correct span
-    request.open('GET','https://vinitvijan26.imad.hasura-app.io/',true);
+    request.open('GET','https://vinitvijan26.imad.hasura-app.io/counter',true);
     request.send(null);
     
 };
