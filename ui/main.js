@@ -22,7 +22,7 @@ button.onclick = function(){
     };
     //Render the variable in the correct span
     request.open('GET','https://vinitvijan26.imad.hasura-app.io/counter',true);
-    //request.send(null);
+    request.send(null);
     
 };
 
