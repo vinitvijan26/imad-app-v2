@@ -6,7 +6,7 @@ button.onclick = function(){
     //one a request is made, the browser tells us if the response is received. Diff stages.
     
     //Capture the response and store it in a variable
-    request.onreadychangestate = function(){
+    request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
             //Take some action
             if(request.status === 200){
