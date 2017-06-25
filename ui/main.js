@@ -29,10 +29,48 @@ button.onclick = function(){
     
 };
 
-/*console.log('Loaded!');
+//Array code
+var button2 = document.getElementById('submit_btn');
+
+button2.onclick = function(){
+	//Submit name 		put a condition for non-empty input
+	var nameInput = document.getElementById('name');
+	var name = nameInput.value;
+
+	//Create a request object
+    var request = new XMLHttpRequest();
+    
+    //Capture the list of names and render it as a list
+	request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            //Take some action
+            if(request.status === 200){
+                var names = request.responseText;
+                names = JSON.parse(names);
+                var list = '';
+				for(var i = 0; i < names.length; i++){
+					list += '<li>' + names[i] + '</li>';
+				}
+				var ul = document.getElementById('ul');
+				ul.innerHTML = list;
+            }
+        }
+        /*else{
+            alert('There was a problem with the request.');
+        }
+        Not done yet*/
+    };
+	//Make the request
+    request.open('GET','/submit-name?name=' + name,true);
+    request.send(null);
+};
+
+
+
+/*//console.log('Loaded!');
 //change the text of main-text div
-var element = document.getElementById('main-text');
-element.innerHTML = 'New Value';
+//var element = document.getElementById('main-text');
+//element.innerHTML = 'New Value';
 var img = document.getElementById('madi');
 var marginLeft = 0;
 function moveRight(){
