@@ -29,8 +29,78 @@ button.onclick = function(){
     
 };
 
+// Submit username/password to login
+    var submit = document.getElementById('login_btn');
+    submit.onclick = function () {
+        // Create a request object
+        var request = new XMLHttpRequest();
+        
+        // Capture the response and store it in a variable
+        request.onreadystatechange = function () {
+          if (request.readyState === XMLHttpRequest.DONE) {
+              // Take some action
+              if (request.status === 200) {
+                  submit.value = 'Sucess!';
+              } else if (request.status === 403) {
+                  submit.value = 'Invalid credentials. Try again?';
+              } else if (request.status === 500) {
+                  alert('Something went wrong on the server');
+                  submit.value = 'Login';
+              } else {
+                  alert('Something went wrong on the server');
+                  submit.value = 'Login';
+              }
+          }  
+          // Not done yet
+        };
+        
+        // Make the request
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        console.log(username);
+        console.log(password);
+        request.open('POST', '/login', true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({username: username, password: password}));  
+        submit.value = 'Logging in...';
+        
+    };
+    
+    var register = document.getElementById('register_btn');
+    register.onclick = function () {
+        // Create a request object
+        var request = new XMLHttpRequest();
+        
+        // Capture the response and store it in a variable
+        request.onreadystatechange = function () {
+          if (request.readyState === XMLHttpRequest.DONE) {
+              // Take some action
+              if (request.status === 200) {
+                  alert('User created successfully');
+                  register.value = 'Registered!';
+              } else {
+                  alert('Could not register the user');
+                  register.value = 'Register';
+              }
+          }
+        };
+        
+        // Make the request
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        console.log(username);
+        console.log(password);
+        request.open('POST', '/create-user', true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({username: username, password: password}));  
+        register.value = 'Registering...';
+    
+    };
+}
+
+
 //Array code
-var button2 = document.getElementById('submit_btn');
+/*var button2 = document.getElementById('submit_btn');
 
 button2.onclick = function(){
 	//Submit name 		put a condition for non-empty input
@@ -58,12 +128,12 @@ button2.onclick = function(){
         /*else{
             alert('There was a problem with the request.');
         }
-        Not done yet*/
+        Not done yet
     };
 	//Make the request
     request.open('GET','/submit-name?name=' + name,true);
     request.send(null);
-};
+};*/
 
 
 
